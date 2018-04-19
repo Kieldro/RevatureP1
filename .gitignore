@@ -26,3 +26,4 @@
 target/
 src/main/resources/db.properties
 *Log.html
+hs_err_pid*
