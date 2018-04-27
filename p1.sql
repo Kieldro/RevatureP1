@@ -1,17 +1,17 @@
+-- ctrl + enter to run statement
+-- 
 SELECT
     *
 FROM
     employee;
 
 DROP TABLE employee;
--- ctrl + enter to run statement
--- 
 
 CREATE TABLE employee (
-    email       VARCHAR2(40),
+    email       VARCHAR2(40) not null,
     password    VARCHAR2(40) DEFAULT 'asd',
-    firstname   VARCHAR2(40),
-    lastname    VARCHAR2(40),
+    firstname   VARCHAR2(40) not null,
+    lastname    VARCHAR2(40) not null,
     manager     INT DEFAULT 0,
     CONSTRAINT pk_email PRIMARY KEY ( email )
 );
