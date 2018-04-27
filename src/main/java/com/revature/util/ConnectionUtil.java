@@ -6,19 +6,20 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.Properties;
 
-import org.apache.log4j.Logger;
+
+//import java.util.logging.Logger;
+
+import org.apache.taglibs.standard.lang.jstl.Logger;
 
 public class ConnectionUtil {
-	static Logger logger;
+	public static Logger logger = Logger.getLogger(ConnectionUtil.class);
 	private ConnectionUtil() {
-		logger = BankApp.logger;
+//		logger = BankApp.logger;
 	}
 	
 	public static Connection getConnection() {
