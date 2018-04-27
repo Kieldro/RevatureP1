@@ -1,15 +1,16 @@
 package com.revature.dao;
 
-import java.util.Map;
+import com.revature.model.User;
 
 public interface DBAccess {
-	public boolean insertUser(User user);
 
-	public User getUser(String name);
-
-	public boolean updateUser(User user);
-
-	public boolean deleteUser(User user);
-
-	 public abstract Map<String, User> getAllUsers();
+	public User getUser(String email);
+	
+//	public boolean insertUser(User user);
+//
+//	public boolean updateUser(User user);
+//
+//	public boolean deleteUser(User user);
+//
+//	public abstract Map<String, User> getAllUsers();
 }

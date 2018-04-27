@@ -11,13 +11,11 @@ import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.Properties;
 
-
-//import java.util.logging.Logger;
-
-import org.apache.taglibs.standard.lang.jstl.Logger;
+import org.apache.log4j.Logger;
 
 public class ConnectionUtil {
 	public static Logger logger = Logger.getLogger(ConnectionUtil.class);
+	// singleton
 	private ConnectionUtil() {
 //		logger = BankApp.logger;
 	}
@@ -52,7 +50,7 @@ public class ConnectionUtil {
 	}
 	
 	public static void printRS(ResultSet rs) throws SQLException {
-		logger.debug("Printing ResultSet");
+//		logger.debug("Printing ResultSet");
 		ResultSetMetaData rsmd = rs.getMetaData();
 		int columnsNumber = rsmd.getColumnCount();
 		while (rs.next()) {

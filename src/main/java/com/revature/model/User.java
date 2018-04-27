@@ -1,59 +1,40 @@
 package com.revature.model;
 
 import java.io.Serializable;
-import java.util.HashMap;
-import java.util.Map;
-
 
 // bean with hash and toString()
-public class User implements Serializable{
-	/**
-	 * 
-	 */
+public class User implements Serializable {
 	private static final long serialVersionUID = 5539802788837931219L;
-	public String name;
-	public String password = "ttt";
-	public float balance = 0;
-	public boolean admin = false;
-	public boolean approved = false;
-	public static Map<String, User> users = new HashMap<>(2);		// persistent storage :P
-	
-	public User(String name) {
-		this.name = name;
-		users.put(name, this);
-	}
-	
-	public User(String name, String password,float balance, boolean admin, boolean approved) {
-		this.name = name;
-		this.password = password;
-		this.balance = balance;
-		this.admin = admin;
-		this.approved = approved;
-		users.put(name, this);
-	}
-	
-	public void deposit(float deposit) {
-		balance += deposit;
-	}
-	
-	public void withdraw(float withdrawal) {
-		balance -= withdrawal;
-	}
+	private String email;
+	private String password;
+	private String firstName;
+	private String lastName;
+	private boolean manager = false;
+	// public static Map<String, User> users = new HashMap<>(2); // persistent storage :P
 
+	public User(String email, String password, String firstName, String lastName, boolean manager) {
+		super();
+		this.email = email;
+		this.password = password;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.manager = manager;
+	}
+	
 	@Override
 	public String toString() {
-		return "User [name=" + name + ", password=" + password + ", balance=" + balance + ", admin=" + admin
-				+ ", approved=" + approved + "]";
+		return "User [email=" + email + ", password=" + password + ", firstName=" + firstName + ", lastName=" + lastName
+				+ ", manager=" + manager + "]";
 	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + (admin ? 1231 : 1237);
-		result = prime * result + (approved ? 1231 : 1237);
-		result = prime * result + Float.floatToIntBits(balance);
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = prime * result + ((email == null) ? 0 : email.hashCode());
+		result = prime * result + ((firstName == null) ? 0 : firstName.hashCode());
+		result = prime * result + ((lastName == null) ? 0 : lastName.hashCode());
+		result = prime * result + (manager ? 1231 : 1237);
 		result = prime * result + ((password == null) ? 0 : password.hashCode());
 		return result;
 	}
@@ -67,16 +48,22 @@ public class User implements Serializable{
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		if (admin != other.admin)
-			return false;
-		if (approved != other.approved)
-			return false;
-		if (Float.floatToIntBits(balance) != Float.floatToIntBits(other.balance))
-			return false;
-		if (name == null) {
-			if (other.name != null)
+		if (email == null) {
+			if (other.email != null)
 				return false;
-		} else if (!name.equals(other.name))
+		} else if (!email.equals(other.email))
+			return false;
+		if (firstName == null) {
+			if (other.firstName != null)
+				return false;
+		} else if (!firstName.equals(other.firstName))
+			return false;
+		if (lastName == null) {
+			if (other.lastName != null)
+				return false;
+		} else if (!lastName.equals(other.lastName))
+			return false;
+		if (manager != other.manager)
 			return false;
 		if (password == null) {
 			if (other.password != null)
@@ -85,6 +72,45 @@ public class User implements Serializable{
 			return false;
 		return true;
 	}
-	
-	
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public boolean isManager() {
+		return manager;
+	}
+
+	public void setManager(boolean manager) {
+		this.manager = manager;
+	}
+
 }

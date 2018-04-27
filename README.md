@@ -48,3 +48,7 @@ Environment:
 * Oracle 11g Database (AWS RDS)
 * Eclipse/Spring Tools Suite
 * SQL Developer
+
+TO DO:
+
+* 
