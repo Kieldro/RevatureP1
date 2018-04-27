@@ -15,20 +15,25 @@ import org.apache.log4j.Logger;
 
 public class ConnectionUtil {
 	public static Logger logger = Logger.getLogger(ConnectionUtil.class);
-	// singleton
+
 	private ConnectionUtil() {
-//		logger = BankApp.logger;
 	}
 	
 	public static Connection getConnection() {
+		logger.debug("getConnection()..");
 		InputStream in = null;
 		Properties p = new Properties();
 		try {
 			in = new FileInputStream("src/main/resources/db.properties");
 			p.load(in);
-			return DriverManager.getConnection(p.getProperty("jdbc.url"), p.getProperty("jdbc.username"),
-					p.getProperty("jdbc.password"));
+			logger.debug("DriverManager.getConnection()... " + p);
+			logger.debug("DriverManager.getConnection()... " + p.getProperty("jdbc.url"));
+			return DriverManager.getConnection("keodb.cgd7zwirysy1.us-east-2.rds.amazonaws.com:1521:orcl", "keo",
+					";lkj1234");
+//			return DriverManager.getConnection(p.getProperty("jdbc.url"), p.getProperty("jdbc.username"),
+//					p.getProperty("jdbc.password"));
 		} catch (SQLException e) {
+			logger.debug("SQLEXCEPTION caught.");
 			System.err.println(e.getMessage()); // prints in red!:D
 			System.err.println("SQL State: " + e.getSQLState());
 			System.err.println("Error code: " + e.getErrorCode());

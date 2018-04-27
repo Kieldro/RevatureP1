@@ -6,11 +6,11 @@ public interface DBAccess {
 
 	public User getUser(String email);
 	
-//	public boolean insertUser(User user);
-//
-//	public boolean updateUser(User user);
-//
-//	public boolean deleteUser(User user);
+	public boolean insertUser(User user);
+
+	public boolean updateUser(User user);
+
+	public boolean deleteUser(User user);
 //
 //	public abstract Map<String, User> getAllUsers();
 }

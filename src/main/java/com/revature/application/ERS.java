@@ -1,14 +1,11 @@
 package com.revature.application;
 
-//import static com.revature.util.ConnectionUtil.logger;
-
-import com.revature.util.ConnectionUtil;
+import static com.revature.util.ConnectionUtil.logger;
 
 public class ERS {
 
 	public static void main(String[] args) {
-		public static Logger logger = Logger.getLogger(ConnectionUtil.class);
-		logger.debug("Printing ResultSet");
+		logger.debug("ERS.main()...");
 		// TODO Auto-generated method stub
 
 	}
