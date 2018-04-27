@@ -11,6 +11,4 @@ public interface DBAccess {
 	public boolean updateUser(User user);
 
 	public boolean deleteUser(User user);
-//
-//	public abstract Map<String, User> getAllUsers();
 }
