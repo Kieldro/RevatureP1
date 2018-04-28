@@ -4,11 +4,12 @@ import static com.revature.util.ConnectionUtil.logger;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.revature.model.Request;
-import com.revature.model.User;
-import com.revature.util.ConnectionUtil;
 
 public class RequestDAO implements RequestDAI{
 		private static RequestDAO instance;
@@ -107,6 +108,31 @@ public class RequestDAO implements RequestDAI{
 
 			logger.debug("DELETE Request failed: " + r);
 			return false;
+		}
+
+		@Override
+		public List<Request> getAllRequests() {
+			// Try-with-Resources will automatically close your resources,
+			// In the reverse order in which you declared them
+			// ***Available since Java 7
+//			try (Connection conn = ConnectionsWithPropertiesUtil.getConnection()) {
+//				// 1. Create a List<Customer>
+//				List<Request> customers = new ArrayList<>();
+//				
+//				// 2. Create a Statement Object
+//				PreparedStatement stmt = conn.prepareStatement("SELECT firstname, lastname, email FROM customer");
+//				ResultSet rs = stmt.executeQuery();
+//				while (rs.next()) {
+//					customers.add(new Request(rs.getString("firstname"), rs.getString(2), rs.getString("email")));
+//				}
+//				// Return the populated list
+//				return customers;
+//			} catch (SQLException sqle) {
+//				System.err.println(sqle.getMessage());
+//				System.err.println("SQL State: " + sqle.getSQLState());
+//				System.err.println("Error Code: " + sqle.getErrorCode());
+//			} 
+			return null;
 		}
 
 }
