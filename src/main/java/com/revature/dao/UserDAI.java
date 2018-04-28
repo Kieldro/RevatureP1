@@ -2,7 +2,8 @@ package com.revature.dao;
 
 import com.revature.model.User;
 
-public interface DBAccess {
+// Data Access Interface
+public interface UserDAI {
 
 	public User getUser(String email);
 	

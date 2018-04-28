@@ -4,7 +4,7 @@ import java.sql.Connection;
 
 import org.junit.jupiter.api.Test;
 
-import com.revature.dao.DBAccessor;
+import com.revature.dao.UserDAO;
 import com.revature.model.User;
 import com.revature.util.ConnectionUtil;
 
@@ -12,7 +12,7 @@ class DAOtests {
 
 	@Test
 	void test0() {
-		DBAccessor dao = DBAccessor.getInstance();
+		UserDAO dao = UserDAO.getInstance();
 		User u = dao.getUser("jane@gmail.com");
 		
 		System.out.println("User u:" + u);

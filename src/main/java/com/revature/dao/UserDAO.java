@@ -9,15 +9,15 @@ import com.revature.model.User;
 import com.revature.util.ConnectionUtil;
 import static com.revature.util.ConnectionUtil.logger;
 
-public class DBAccessor implements DBAccess {
-	private static DBAccessor instance;
+public class UserDAO implements UserDAI {
+	private static UserDAO instance;
 
-	private DBAccessor() {
+	private UserDAO() {
 	}
 
-	public static DBAccessor getInstance() {
+	public static UserDAO getInstance() {
 		if (instance == null) {
-			instance = new DBAccessor();
+			instance = new UserDAO();
 		}
 		return instance;
 	}

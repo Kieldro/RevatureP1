@@ -28,7 +28,7 @@ public class ConnectionUtil {
 			p.load(in);
 			logger.debug("DriverManager.getConnection()... " + p);
 			logger.debug("DriverManager.getConnection()... " + p.getProperty("jdbc.url"));
-			return DriverManager.getConnection("keodb.cgd7zwirysy1.us-east-2.rds.amazonaws.com:1521:orcl", "keo",
+			return DriverManager.getConnection("jdbc:orcl:keodb.cgd7zwirysy1.us-east-2.rds.amazonaws.com", "keo",
 					";lkj1234");
 //			return DriverManager.getConnection(p.getProperty("jdbc.url"), p.getProperty("jdbc.username"),
 //					p.getProperty("jdbc.password"));
