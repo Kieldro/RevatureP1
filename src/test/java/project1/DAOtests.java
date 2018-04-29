@@ -20,6 +20,7 @@ class DAOtests {
 	@Test
 	void test1() {
 		Connection con = ConnectionUtil.getConnection();
+		System.out.println("HELLO");
 //		User u = dao.getUser("jane@gmail.com");
 		
 //		System.out.println("User u:" + u);
