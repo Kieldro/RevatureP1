@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 
 import com.revature.dao.UserDAO;
 import com.revature.model.User;
+import com.revature.service.UserService;
 import com.revature.util.ConnectionUtil;
 
 class DAOtests {
@@ -20,10 +21,9 @@ class DAOtests {
 	@Test
 	void test1() {
 		Connection con = ConnectionUtil.getConnection();
-		System.out.println("HELLO");
-//		User u = dao.getUser("jane@gmail.com");
+		User u = UserService.getUser("jane@gmail.com");
 		
-//		System.out.println("User u:" + u);
+		System.out.println("User u:" + u);
 	}
 
 }

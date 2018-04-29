@@ -1,9 +1,4 @@
 -- ctrl + enter to run statement
--- 
-SELECT
-    *
-FROM
-    employee;
 
 DROP TABLE employee;
 
@@ -16,7 +11,7 @@ CREATE TABLE employee (
     CONSTRAINT pk_email PRIMARY KEY ( email )
 );
 
-SELECT +
+SELECT 
     *
 FROM
     employee;

@@ -12,7 +12,6 @@ public class ERS {
 		logger.debug("ERS.main()...");
 
 
-		Connection con = ConnectionUtil.getConnection();
 	}
 
 }

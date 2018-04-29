@@ -26,8 +26,6 @@ public class ConnectionUtil {
 		try {
 			in = new FileInputStream("src/main/resources/db.properties");
 			p.load(in);
-			logger.debug("DriverManager.getConnection()... " + p);
-			logger.debug("DriverManager.getConnection()... " + p.getProperty("jdbc.url"));
 			return DriverManager.getConnection(p.getProperty("jdbc.url"), p.getProperty("jdbc.username"),
 					p.getProperty("jdbc.password"));
 		} catch (SQLException e) {
