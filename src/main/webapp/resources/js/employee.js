@@ -30,6 +30,7 @@ function showMyReimbursements() {
 	let xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function() {
 		console.log("this.readyState: " + this.readyState)
+		console.log("this.status: " + this.status)
 		if (this.readyState == 4 && this.status == 200) {
 			var test = this.responseText;
 			console.log("this.responseText" + test);
@@ -39,7 +40,7 @@ function showMyReimbursements() {
 	};
 	xhr.open("POST", "/project1/listRequests.do");
 	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-	xhr.send("email=" + email);
+	xhr.send("email="+email);
 }
 
 showMyReimbursements();
