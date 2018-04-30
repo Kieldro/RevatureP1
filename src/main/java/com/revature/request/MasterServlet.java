@@ -12,7 +12,6 @@ import com.revature.model.Request;
 
 /* Servlet that maps every single request that the client makes */
 public class MasterServlet extends HttpServlet {
-
 	private static final long serialVersionUID = 1159764852861289598L;
 
 	@Override
@@ -46,7 +45,6 @@ public class MasterServlet extends HttpServlet {
 		String responseText = new ObjectMapper().writeValueAsString(o); // marshall object to JSON with Jackson
 		System.out.println("responseText: " + responseText);
 		response.getWriter().write(responseText);
-		System.out.println("response: " + response);
 
 		System.out.println("doPost() complete.");
 	}

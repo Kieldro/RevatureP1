@@ -8,7 +8,7 @@
 	<h2 id="headline">Employee Request Form</h2>
 	<!-- <h3 id="loggedInAs"></h3> -->
 
-	<form method="get" action="servlet">
+	<form >
 		<label for="purpose"><b>Purpose</b></label> <input id="purpose_input"
 			type="text" placeholder="purpose" name="purpose" required> <label
 			for="amount"><br /> <b>Amount</b></label> <input id="amount_input"
@@ -17,7 +17,7 @@
 			onclick="updateReimbursement()">Submit</button>
 	</form>
 
-		<form id="managerForm" method="get" action="servlet">
+		<form id="managerForm" method="post" action="servlet">
 			<label for="requestId"><b>Request ID</b></label> <input
 				id="requestId_input" type="text" placeholder="requestId"
 				name="requestId" required> <label for="status"><br />
@@ -36,7 +36,6 @@ Press refresh to get information
 	<button type="button" id="refresh_request"
 		onclick="showMyReimbursements()">Refresh</button>
 	</br>
-	<a href='/project1/login.html'>Click to go to login page</a>
-	<script type="text/javascript" src="resources/js/employee.js"></script>
+	<script type="text/javascript" src="resources/js/functions.js"></script>
 </body>
 </html>

@@ -20,10 +20,15 @@ public class RequestHelper {
 		case "/project1/updateRequest.do":
 			int id = Integer.parseInt(request.getParameter("requestId"));
 			int status = Integer.parseInt(request.getParameter("status"));
-			r = new Request(id, 0, request.getParameter("email"), "", status, null);
+			r = new Request(id, 0, request.getParameter("email"), "", status, request.getParameter("email"));
 			return RequestService.updateRequest(r);
 		case "/project1/listRequests.do":
 			return RequestService.getAllRequest();
+		case "/project1/login.do":
+			System.out.println("email: " + request.getParameter("email"));
+			System.out.println("password: " + request.getParameter("password"));
+			
+			return "";
 		default:
 			return "404.jsp";
 		}
