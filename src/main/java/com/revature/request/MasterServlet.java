@@ -44,10 +44,8 @@ public class MasterServlet extends HttpServlet {
 		 * specifically requires that objects to be transformed have getters for private
 		 * variables
 		 */
-		
 		Object o = RequestHelper.process(request);
-//		Object o = new Request(1, 3.14, "jane@gmail.com"); 
-		String responseText = new ObjectMapper().writeValueAsString(o);
+		String responseText = new ObjectMapper().writeValueAsString(o); // marshall object to JSON with Jackson
 		System.out.println("responseText: " + responseText);
 		response.getWriter().write(responseText);
 		System.out.println("response: " + response);

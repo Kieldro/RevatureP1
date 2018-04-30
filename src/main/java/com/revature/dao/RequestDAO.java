@@ -50,23 +50,21 @@ public class RequestDAO implements RequestDAI{
 		}
 
 		public boolean insertRequest(Request r) {
-//			try (Connection con = ConnectionUtil.getConnection()) {
-//				int idx = 0;
-//				PreparedStatement ps = con.prepareStatement(
-//						"INSERT INTO employee (email, password, firstName, lastName, manager) " + "VALUES (?, ?, ?, ?, ?)");
-//				ps.setString(++idx, u.getEmail());
-//				ps.setString(++idx, u.getPassword());
-//				ps.setString(++idx, u.getFirstName());
-//				ps.setString(++idx, u.getLastName());
-//				ps.setBoolean(++idx, u.isManager());
-//
-//				logger.trace("executing INSERT...");
-//				return ps.executeUpdate() > 0;
-//			} catch (SQLException e) {
-//				System.err.print(e.getMessage());
-//				System.err.println("SQL State: " + e.getSQLState());
-//				System.err.println("Error code: " + e.getErrorCode());
-//			}
+			logger.debug("insertRequest()...");
+			try (Connection con = ConnectionUtil.getConnection()) {
+				int idx = 0;
+				PreparedStatement ps = con.prepareStatement(
+						"INSERT INTO request (amount, email) VALUES (?, ?)");
+				ps.setDouble(++idx, r.getAmount());
+				ps.setString(++idx, r.getEmail());
+
+				logger.debug("executing INSERT...");
+				return ps.executeUpdate() > 0;
+			} catch (SQLException e) {
+				System.err.print(e.getMessage());
+				System.err.println("SQL State: " + e.getSQLState());
+				System.err.println("Error code: " + e.getErrorCode());
+			}
 
 			logger.debug("INSERT Request failed: " + r);
 			return false;

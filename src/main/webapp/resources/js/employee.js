@@ -2,25 +2,23 @@ console.log("js running...")
 //var x = document.cookie;
 //document.getElementById("loggedInAs").innerHTML = x.substring(9);
 
-//function updateReimbursement() {
-//	var email = document.getElementById("loggedInAs").innerHTML;
-//	var reason = document.getElementById("reason_input").value;
-//	var amount = document.getElementById("amount_input").value;
-//	var image = document.getElementById("image_input").value;
-//	console.log(email + " succesfully did function  for amount " + amount)
-//
-//	var xhttp = new XMLHttpRequest();
-//	xhttp.onreadystatechange = function() {
-//		if (this.readyState == 4 && this.status == 200) {
-//			console.log("sent the info")
-//		}
-//	};
-//	xhttp.open("POST", "/reimbursement/createRequest.do");
-//	xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
-//	xhttp.send("email=" + email + "&reason=" + reason + "&amount=" + amount
-//			+ "&image=" + image);
-//
-//}
+function updateReimbursement() {
+	let email = "jane@gmail.com";
+	// let email = document.getElementById("loggedInAs").innerHTML;
+	let purpose = document.getElementById("purpose_input").value;
+	let amount = document.getElementById("amount_input").value;
+	console.log(email + " successfully did function for amount: " + amount)
+
+	let xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+			console.log("sent the info")
+		}
+	};
+	xhttp.open("POST", "/project1/insertRequest.do");
+	xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	xhttp.send("email=" + email + "&purpose=" + purpose + "&amount=" + amount);
+}
 
 function showMyReimbursements() {
 	let email = "jane@gmail.com";
@@ -33,8 +31,14 @@ function showMyReimbursements() {
 //		console.log("this.status: " + this.status)
 		if (this.readyState == 4 && this.status == 200) {
 			console.log("this.responseText: " + this.responseText);
-			document.getElementById("all_reimbursements").innerHTML = this.responseText;
-//			console.log("sucessfully finished showReimbursements().");
+			let result = JSON.parse(this.responseText);
+			var s = "";
+			for(var i in result){
+				s += JSON.stringify(result[i]) + '\n';			
+			}
+//			console.log("obj: " + JSON.stringify(result[0]));
+			
+			document.getElementById("all_reimbursements").innerHTML = s;
 		}
 	};
 	xhr.open("POST", "/project1/listRequests.do");

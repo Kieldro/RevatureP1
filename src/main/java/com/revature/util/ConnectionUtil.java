@@ -26,7 +26,7 @@ public class ConnectionUtil {
 
 	private ConnectionUtil() {
 	}
-	
+
 	public static Connection getConnection() {
 		logger.debug("getConnection()..");
 		InputStream in = null;
@@ -57,9 +57,9 @@ public class ConnectionUtil {
 		}
 		return null;
 	}
-	
+
 	public static void printRS(ResultSet rs) throws SQLException {
-//		logger.debug("Printing ResultSet");
+		// logger.debug("Printing ResultSet");
 		ResultSetMetaData rsmd = rs.getMetaData();
 		int columnsNumber = rsmd.getColumnCount();
 		while (rs.next()) {

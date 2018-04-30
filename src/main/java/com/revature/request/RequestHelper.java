@@ -11,8 +11,9 @@ public class RequestHelper {
 
 	public static Object process(HttpServletRequest request) {
 		switch (request.getRequestURI()) {
-		case "/project1/login.do":
-			return LoginController.login(request);
+		case "/project1/insertRequest.do":
+//			return RequestService.insertRequest(new Request(request));
+			return null;
 		case "/project1/listRequests.do":
 			return RequestService.getAllRequest();
 		default:
