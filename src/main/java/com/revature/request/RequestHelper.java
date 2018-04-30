@@ -18,9 +18,9 @@ public class RequestHelper {
 			Request r = new Request(0, amt, request.getParameter("email"), request.getParameter("purpose"), 1, null);
 			return RequestService.insertRequest(r);
 		case "/project1/updateRequest.do":
-			System.out.println(request.getParameter("purpose"));
-			amt = Double.parseDouble(request.getParameter("amount"));
-			r = new Request(0, amt, request.getParameter("email"), request.getParameter("purpose"), 1, null);
+			int id = Integer.parseInt(request.getParameter("requestId"));
+			int status = Integer.parseInt(request.getParameter("status"));
+			r = new Request(id, 0, request.getParameter("email"), "", status, null);
 			return RequestService.updateRequest(r);
 		case "/project1/listRequests.do":
 			return RequestService.getAllRequest();

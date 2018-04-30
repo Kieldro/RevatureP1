@@ -1,6 +1,6 @@
 //console.log("js running...")
 let email = "jane@gmail.com";
-let manager = false;
+let manager = true;
 //var x = document.cookie;
 //document.getElementById("loggedInAs").innerHTML = x.substring(9);
 
@@ -70,6 +70,8 @@ function updateStatus() {
 	};
 	xhttp.open("POST", "/project1/updateRequest.do");
 	xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+	console.log(email + " updating: " + status + requestId);
 	xhttp.send("email=" + email + "&status=" + status + "&requestId=" + requestId);
 }
 
