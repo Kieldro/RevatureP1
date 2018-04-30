@@ -34,8 +34,6 @@ public class MasterServlet extends HttpServlet {
 		System.out.println("request.getParameterNames(): " + request.getParameterNames());
 		System.out.println("request.getParameter(email): " + request.getParameter("email"));
 		System.out.println("request.getRequestURI(): " + request.getRequestURI());
-		// System.out.println("RequestHelper.process(request): " +
-		// RequestHelper.process(request));
 
 		/* Sets content to be written in PrintWriter as JSON */
 		response.setContentType("application/json");

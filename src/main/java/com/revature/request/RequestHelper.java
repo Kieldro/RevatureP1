@@ -13,9 +13,15 @@ public class RequestHelper {
 	public static Object process(HttpServletRequest request) {
 		switch (request.getRequestURI()) {
 		case "/project1/insertRequest.do":
+			System.out.println(request.getParameter("purpose"));
 			double amt = Double.parseDouble(request.getParameter("amount"));
-			Request r = new Request(0, amt, request.getParameter("email"), "", 1, null);
+			Request r = new Request(0, amt, request.getParameter("email"), request.getParameter("purpose"), 1, null);
 			return RequestService.insertRequest(r);
+		case "/project1/updateRequest.do":
+			System.out.println(request.getParameter("purpose"));
+			amt = Double.parseDouble(request.getParameter("amount"));
+			r = new Request(0, amt, request.getParameter("email"), request.getParameter("purpose"), 1, null);
+			return RequestService.updateRequest(r);
 		case "/project1/listRequests.do":
 			return RequestService.getAllRequest();
 		default:

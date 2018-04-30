@@ -5,7 +5,7 @@
 <title>Employee page</title>
 </head>
 <body>
-	<h2>Employee Request Form</h2>
+	<h2 id="headline">Employee Request Form</h2>
 	<!-- <h3 id="loggedInAs"></h3> -->
 
 	<form method="get" action="servlet">
@@ -16,8 +16,18 @@
 		<button type="button" id="request_submit"
 			onclick="updateReimbursement()">Submit</button>
 	</form>
+
+		<form id="managerForm" method="get" action="servlet">
+			<label for="requestId"><b>Request ID</b></label> <input
+				id="requestId_input" type="text" placeholder="requestId"
+				name="requestId" required> <label for="status"><br />
+				<b>Change status to</b></label> <input id="status_input" type="text"
+				placeholder="0 to deny, 2 to approve" name="status" required>
+			<br />
+			<button type="button" id="status_submit" onclick="updateStatus()">Submit</button>
+		</form>
 	<div>
-		<br></br> <b>Reimbursements</b>
+		<br></br> <b>Reimbursement requests</b>
 	</div>
 	<textarea id="all_reimbursements" rows="20" cols="120">
 Press refresh to get information
@@ -27,6 +37,6 @@ Press refresh to get information
 		onclick="showMyReimbursements()">Refresh</button>
 	</br>
 	<a href='/project1/login.html'>Click to go to login page</a>
-	<script type="text/javascript" src="resources/js/employee.js"></script> 
+	<script type="text/javascript" src="resources/js/employee.js"></script>
 </body>
 </html>

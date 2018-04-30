@@ -1,9 +1,21 @@
-console.log("js running...")
+//console.log("js running...")
+let email = "jane@gmail.com";
+let manager = false;
 //var x = document.cookie;
 //document.getElementById("loggedInAs").innerHTML = x.substring(9);
 
+ var managerForm = document.getElementById("managerForm");
+ var headline = document.getElementById("headline");
+    if (manager) {
+    	headline.innerHTML = "Request Management Form";
+    	managerForm.style.display = "block";
+    } else {
+//    	hide
+    	headline.innerHTML = "Employee Request Form";
+    	managerForm.style.display = "none";
+    }
+
 function updateReimbursement() {
-	let email = "jane@gmail.com";
 	// let email = document.getElementById("loggedInAs").innerHTML;
 	let purpose = document.getElementById("purpose_input").value;
 	let amount = document.getElementById("amount_input").value;
@@ -21,7 +33,6 @@ function updateReimbursement() {
 }
 
 function showMyReimbursements() {
-	let email = "jane@gmail.com";
 //	var email = document.getElementById("loggedInAs").innerHTML;
 //	console.log("showReimbursements()...")
 
@@ -44,6 +55,22 @@ function showMyReimbursements() {
 	xhr.open("POST", "/project1/listRequests.do");
 	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	xhr.send("email="+email);
+}
+
+function updateStatus() {
+	let requestId = document.getElementById("requestId_input").value;
+	let status = document.getElementById("status_input").value;
+
+	let xhttp = new XMLHttpRequest();
+	xhttp.onreadystatechange = function() {
+		if (this.readyState == 4 && this.status == 200) {
+//			console.log(email + " successfully did function for amount: " + amount)
+			showMyReimbursements();
+		}
+	};
+	xhttp.open("POST", "/project1/updateRequest.do");
+	xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+	xhttp.send("email=" + email + "&status=" + status + "&requestId=" + requestId);
 }
 
 showMyReimbursements();

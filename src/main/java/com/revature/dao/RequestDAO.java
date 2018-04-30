@@ -55,9 +55,10 @@ public class RequestDAO implements RequestDAI {
 		logger.debug("insertRequest()...");
 		try (Connection con = ConnectionUtil.getConnection()) {
 			int idx = 0;
-			PreparedStatement ps = con.prepareStatement("INSERT INTO request (amount, email) VALUES (?, ?)");
+			PreparedStatement ps = con.prepareStatement("INSERT INTO request (amount, email, purpose) VALUES (?, ?, ?)");
 			ps.setDouble(++idx, r.getAmount());
 			ps.setString(++idx, r.getEmail());
+			ps.setString(++idx, r.getPurpose());
 
 			logger.debug("executing INSERT...");
 			return ps.executeUpdate() > 0;
@@ -72,24 +73,22 @@ public class RequestDAO implements RequestDAI {
 	}
 
 	public boolean updateRequest(Request r) {
-		// UPDATE user_account SET balance = 4.0, approved = 0 WHERE name = ?;
-		// try (Connection con = ConnectionUtil.getConnection()) {
-		// int idx = 0;
-		// PreparedStatement ps = con.prepareStatement(
-		// "UPDATE employee SET password = ?, firstName = ?, lastName= ?, manager= ?
-		// WHERE email= ?");
-		// ps.setString(++idx, u.getPassword());
-		// ps.setString(++idx, u.getFirstName());
-		// ps.setString(++idx, u.getLastName());
-		// ps.setBoolean(++idx, u.isManager());
-		//
-		// logger.trace("executing UPDATE to User..." + u);
-		// return ps.executeUpdate() > 0;
-		// } catch (SQLException e) {
-		// System.err.println(e.getMessage());
-		// System.err.println("SQL State: " + e.getSQLState());
-		// System.err.println("Error code: " + e.getErrorCode());
-		// }
+		logger.debug("updateRequest()...");
+		try (Connection con = ConnectionUtil.getConnection()) {
+			int idx = 0;
+			PreparedStatement ps = con.prepareStatement(
+			"UPDATE request SET status = ?, managerEmail = ? WHERE id = ?");
+			ps.setInt(++idx, r.getStatus());
+			ps.setString(++idx, r.getManagerEmail());
+			ps.setInt(++idx, r.getId());
+			
+			logger.debug("executing UPDATE...");
+			return ps.executeUpdate() > 0;
+		} catch (SQLException e) {
+			System.err.print(e.getMessage());
+			System.err.println("SQL State: " + e.getSQLState());
+			System.err.println("Error code: " + e.getErrorCode());
+		}
 
 		logger.debug("UPDATE Request modified 0 rows: " + r);
 		return false;

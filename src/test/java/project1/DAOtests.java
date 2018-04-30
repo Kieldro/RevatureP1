@@ -40,4 +40,11 @@ class DAOtests {
 		
 		System.out.println("Insert successful: " + b);
 	}
+	@Test
+	void testUpdateRequest() {
+		Request r = new Request(1, 97.73, "jane@gmail.com", "some reason", 2, "keo@gmail.com");
+		boolean b = RequestService.updateRequest(r);
+		
+		System.out.println("Update successful: " + b);
+	}
 }
