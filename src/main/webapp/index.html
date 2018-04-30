@@ -1,6 +1,44 @@
+<!DOCTYPE html>
 <html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Employee page</title>
+</head>
 <body>
-	<h2>Hello PROJECT1!</h2>
 	<a href='/project1/login.html'>Click to go to login page</a>
+
+
+
+	<h2>Employee Request Form</h2>
+
+	<!-- <h3 id="loggedInAs"></h3> -->
+
+
+	<form method="get" action="servlet">
+
+			<label for="reason"><b>Reason</b></label> <input id="reason_input"
+				type="text" placeholder="reason" name="reason"
+				required> <label for="amount"><br/><b>Amount</b></label> <input
+				id="amount_input" type="text"
+				placeholder="0.00" name="amount" required>
+
+
+
+			<button type="button" id="request_submit"
+				onclick="updateReimbursement()">Submit</button>
+
+
+	</form>
+	<div>
+	<br></br>
+<b>Reimbursements</b></div>
+	<textarea id="all_reimbursements" rows="20" cols="100">
+Press refresh to get information
+</textarea>
+
+	<button type="button" id="refresh_request"
+		onclick="showMyReimbursements()">Refresh</button>
+
+	<script type="text/javascript" src="resources/js/employee.js"></script>
 </body>
 </html>

@@ -51,4 +51,4 @@ Environment:
 
 TO DO:
 
-* fix jdbc error
+* why do pom versions crash everything?
