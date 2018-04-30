@@ -14,6 +14,8 @@ public class RequestHelper {
 			return LoginController.login(request);
 		case "/project1/home.do":
 			return HomeController.home(request);
+		case "/project1/listRequests.do":
+			return HomeController.home(request);
 		default:
 			return "404.jsp";
 		}

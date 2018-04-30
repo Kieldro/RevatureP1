@@ -37,7 +37,7 @@ function showMyReimbursements() {
 			console.log("sucessfully finished showReimbursements().");
 		}
 	};
-	xhr.open("POST", "/project1/getAllMyReimbursements.do");
+	xhr.open("POST", "/project1/listRequests.do");
 	xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	xhr.send("email=" + email);
 }
