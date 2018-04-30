@@ -4,18 +4,17 @@ import javax.servlet.http.HttpServletRequest;
 
 import com.revature.controller.HomeController;
 import com.revature.controller.LoginController;
+import com.revature.service.RequestService;
 
 /* Class that helps the MasterServlet with mappings to specific controllers */
 public class RequestHelper {
-	
-	public static String process(HttpServletRequest request) {
-		switch(request.getRequestURI()) {
+
+	public static Object process(HttpServletRequest request) {
+		switch (request.getRequestURI()) {
 		case "/project1/login.do":
 			return LoginController.login(request);
-		case "/project1/home.do":
-			return HomeController.home(request);
 		case "/project1/listRequests.do":
-			return HomeController.home(request);
+			return RequestService.getAllRequest();
 		default:
 			return "404.jsp";
 		}

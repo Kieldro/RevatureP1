@@ -25,17 +25,16 @@ console.log("js running...")
 function showMyReimbursements() {
 	let email = "jane@gmail.com";
 //	var email = document.getElementById("loggedInAs").innerHTML;
-	console.log("showReimbursements()...")
+//	console.log("showReimbursements()...")
 
 	let xhr = new XMLHttpRequest();
 	xhr.onreadystatechange = function() {
-		console.log("this.readyState: " + this.readyState)
-		console.log("this.status: " + this.status)
+//		console.log("this.readyState: " + this.readyState)
+//		console.log("this.status: " + this.status)
 		if (this.readyState == 4 && this.status == 200) {
-			var test = this.responseText;
-			console.log("this.responseText" + test);
+			console.log("this.responseText: " + this.responseText);
 			document.getElementById("all_reimbursements").innerHTML = this.responseText;
-			console.log("sucessfully finished showReimbursements().");
+//			console.log("sucessfully finished showReimbursements().");
 		}
 	};
 	xhr.open("POST", "/project1/listRequests.do");

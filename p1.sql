@@ -23,13 +23,21 @@ INSERT INTO employee VALUES (
     'Doe',
     0
 );        -- dummy row used for testing
-
+INSERT INTO employee VALUES (
+    'keo@gmail.com',
+    'asd',
+    'Keo',
+    'Tron',
+    1
+); 
 DROP TABLE request;
 
 CREATE TABLE request (
     id       number GENERATED ALWAYS as IDENTITY(START with 1 INCREMENT by 1),
     amount   NUMBER(13,2) DEFAULT 0,
     email    VARCHAR2(40),
+--    purpose VARCHAR2(40),
+--    status   number default 1,    -- 1 is pending, 0 denied, 2 approved
     CONSTRAINT pk_id PRIMARY KEY ( id ),
     CONSTRAINT fk_email FOREIGN KEY ( email )
         REFERENCES employee ( email )
@@ -45,9 +53,18 @@ INSERT INTO request (amount, email)VALUES (
 'jane@gmail.com'
 );
 
+INSERT INTO request (amount, email)VALUES (
+6.66,
+'jane@gmail.com'
+);
+INSERT INTO request (amount, email)VALUES (
+100.44,
+'jane@gmail.com'
+);
+
 select * from EMPLOYEE natural join request;
     
-    
+    commit;
     
     
     

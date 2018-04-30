@@ -1,6 +1,12 @@
 package com.revature.model;
 
-public class Request {
+import java.io.Serializable;
+
+public class Request implements Serializable{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 6698370436474650889L;
 	private int id;
 	private double amount;
 	private String email;

@@ -10,6 +10,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.revature.model.Request;
+import com.revature.model.User;
+import com.revature.util.ConnectionUtil;
 
 public class RequestDAO implements RequestDAI{
 		private static RequestDAO instance;
@@ -112,27 +114,23 @@ public class RequestDAO implements RequestDAI{
 
 		@Override
 		public List<Request> getAllRequests() {
-			// Try-with-Resources will automatically close your resources,
-			// In the reverse order in which you declared them
-			// ***Available since Java 7
-//			try (Connection conn = ConnectionsWithPropertiesUtil.getConnection()) {
-//				// 1. Create a List<Customer>
-//				List<Request> customers = new ArrayList<>();
-//				
-//				// 2. Create a Statement Object
-//				PreparedStatement stmt = conn.prepareStatement("SELECT firstname, lastname, email FROM customer");
-//				ResultSet rs = stmt.executeQuery();
-//				while (rs.next()) {
-//					customers.add(new Request(rs.getString("firstname"), rs.getString(2), rs.getString("email")));
-//				}
-//				// Return the populated list
-//				return customers;
-//			} catch (SQLException sqle) {
-//				System.err.println(sqle.getMessage());
-//				System.err.println("SQL State: " + sqle.getSQLState());
-//				System.err.println("Error Code: " + sqle.getErrorCode());
-//			} 
-			return null;
+			logger.debug("getAllRequests()...");
+			List<Request> requests = new ArrayList<>();
+			try (Connection con = ConnectionUtil.getConnection()) {
+				PreparedStatement stmt = con.prepareStatement("SELECT id, amount, email FROM request");
+				ResultSet rs = stmt.executeQuery();
+				logger.debug("query done.");
+				while (rs.next()) {
+					requests.add(new Request(rs.getInt("id"), rs.getDouble("amount"), rs.getString("email")));
+				}
+			} catch (SQLException e) {
+				System.err.println(e.getMessage());
+				System.err.println("SQL State: " + e.getSQLState());
+				System.err.println("Error code: " + e.getErrorCode());
+			}
+
+//			logger.debug("No requests found (Result set empty)");
+			return requests;
 		}
 
 }

@@ -27,9 +27,9 @@ public class UserDAO implements UserDAI {
 			PreparedStatement ps = con.prepareStatement(
 					"SELECT email, password, firstName, lastName, manager FROM employee WHERE email = ?");
 			ps.setString(1, email);
-			logger.trace("getUser query executing...");
+			logger.debug("getUser query executing...");
 			ResultSet rs = ps.executeQuery();
-			logger.trace("query done.");
+			logger.debug("query done.");
 			if (rs.next()) {
 				return new User(rs.getString("email"), rs.getString("password"), rs.getString("firstName"),
 						rs.getString("lastName"), rs.getBoolean("manager"));

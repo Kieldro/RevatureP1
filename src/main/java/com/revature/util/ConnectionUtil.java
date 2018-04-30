@@ -24,7 +24,7 @@ public class ConnectionUtil {
 		InputStream in = null;
 		Properties p = new Properties();
 		try {
-			in = new FileInputStream("src/main/resources/db.properties");
+			in = new FileInputStream("/home/keo/Documents/workspace-st/project1/src/main/resources/db.properties");
 			p.load(in);
 			return DriverManager.getConnection(p.getProperty("jdbc.url"), p.getProperty("jdbc.username"),
 					p.getProperty("jdbc.password"));
