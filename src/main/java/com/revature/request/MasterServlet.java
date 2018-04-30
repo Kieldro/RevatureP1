@@ -45,8 +45,8 @@ public class MasterServlet extends HttpServlet {
 		 * variables
 		 */
 		
-//		Object o = RequestHelper.process(request);
-		Object o = new Request(1, 3.14, "jane@gmail.com"); 
+		Object o = RequestHelper.process(request);
+//		Object o = new Request(1, 3.14, "jane@gmail.com"); 
 		String responseText = new ObjectMapper().writeValueAsString(o);
 		System.out.println("responseText: " + responseText);
 		response.getWriter().write(responseText);
