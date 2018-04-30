@@ -1,5 +1,4 @@
 -- ctrl + enter to run statement
-
 DROP TABLE employee;
 
 CREATE TABLE employee (
@@ -11,7 +10,7 @@ CREATE TABLE employee (
     CONSTRAINT pk_email PRIMARY KEY ( email )
 );
 
-SELECT 
+SELECT
     *
 FROM
     employee;
@@ -23,22 +22,28 @@ INSERT INTO employee VALUES (
     'Doe',
     0
 );        -- dummy row used for testing
+
 INSERT INTO employee VALUES (
     'keo@gmail.com',
     'asd',
     'Keo',
     'Tron',
     1
-); 
+);
+
 DROP TABLE request;
 
 CREATE TABLE request (
-    id       number GENERATED ALWAYS as IDENTITY(START with 1 INCREMENT by 1),
-    amount   NUMBER(13,2) DEFAULT 0,
-    email    VARCHAR2(40),
---    purpose VARCHAR2(40),
---    status   number default 1,    -- 1 is pending, 0 denied, 2 approved
+    id        NUMBER
+        GENERATED ALWAYS AS IDENTITY ( START WITH 1 INCREMENT BY 1 ),
+    amount    NUMBER(13,2) DEFAULT 0,
+    email     VARCHAR2(40),
+    purpose   VARCHAR2(40),
+    status    NUMBER DEFAULT 1,    -- 1 is pending, 0 denied, 2 approved
+    managerEmail   VARCHAR2(40),
     CONSTRAINT pk_id PRIMARY KEY ( id ),
+    CONSTRAINT fk_manager FOREIGN KEY ( managerEmail )
+        REFERENCES employee ( email ),
     CONSTRAINT fk_email FOREIGN KEY ( email )
         REFERENCES employee ( email )
 );
@@ -48,23 +53,43 @@ SELECT
 FROM
     request;
 
-INSERT INTO request (amount, email)VALUES (
-2.42,
-'jane@gmail.com'
+INSERT INTO request (
+    amount,
+    email,
+    purpose
+) VALUES (
+    2.42,
+    'jane@gmail.com', 
+    'candy'
 );
 
-INSERT INTO request (amount, email)VALUES (
-6.66,
-'jane@gmail.com'
-);
-INSERT INTO request (amount, email)VALUES (
-100.44,
-'jane@gmail.com'
+INSERT INTO request (
+    amount,
+    email,
+    purpose
+) VALUES (
+    6.66,
+    'jane@gmail.com',
+    'business dinner'
 );
 
-select * from EMPLOYEE natural join request;
-    
-    commit;
+INSERT INTO request (
+    amount,
+    email, 
+    purpose
+) VALUES (
+    100.44,
+    'jane@gmail.com',
+    'personal trainer'
+);
+
+SELECT
+    *
+FROM
+    employee
+    NATURAL JOIN request;
+
+COMMIT;
     
     
     
@@ -202,6 +227,7 @@ CREATE TABLE user_account (
     CONSTRAINT fk_customer_user FOREIGN KEY ( user_name )
         REFERENCES user_customer ( user_name )
 );
+
 SELECT
     *
 FROM
@@ -379,8 +405,13 @@ CREATE TABLE user_customer (
     CONSTRAINT pk_user_customer PRIMARY KEY ( customer_id )
 );
 
-CREATE TABLE user_account ( account_id INTEGER,account_name VARCHAR2(160),user_name VARCHAR2(160),acct_creation TIMESTAMP DEFAULT current_timestamp,balance
-NUMBER DEFAULT 0,constraint pk_user_account PRIMARY KEY(account_id),
-constraint fk_customer_user FOREIGN KEY(user_name)
-    REFERENCES user_customer(user_name)
+CREATE TABLE user_account (
+    account_id      INTEGER,
+    account_name    VARCHAR2(160),
+    user_name       VARCHAR2(160),
+    acct_creation   TIMESTAMP DEFAULT current_timestamp,
+    balance         NUMBER DEFAULT 0,
+    CONSTRAINT pk_user_account PRIMARY KEY ( account_id ),
+    CONSTRAINT fk_customer_user FOREIGN KEY ( user_name )
+        REFERENCES user_customer ( user_name )
 );

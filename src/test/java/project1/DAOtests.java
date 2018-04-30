@@ -35,7 +35,7 @@ class DAOtests {
 	}
 	@Test
 	void testInsertRequest() {
-		Request r = new Request(1, 97.73, "jane@gmail.com");
+		Request r = new Request(1, 97.73, "jane@gmail.com", "some reason", 1, null);
 		boolean b = RequestService.insertRequest(r);
 		
 		System.out.println("Insert successful: " + b);

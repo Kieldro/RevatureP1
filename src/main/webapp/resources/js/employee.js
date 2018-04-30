@@ -18,7 +18,6 @@ function updateReimbursement() {
 	xhttp.open("POST", "/project1/insertRequest.do");
 	xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	xhttp.send("email=" + email + "&purpose=" + purpose + "&amount=" + amount);
-
 }
 
 function showMyReimbursements() {

@@ -2,7 +2,7 @@ package com.revature.model;
 
 import java.io.Serializable;
 
-public class Request implements Serializable{
+public class Request implements Serializable {
 	/**
 	 * 
 	 */
@@ -10,12 +10,18 @@ public class Request implements Serializable{
 	private int id;
 	private double amount;
 	private String email;
+	private String purpose = null;
+	private int status = 1;
+	private String managerEmail = null;
 
-	public Request(int id, double amount, String email) {
+	public Request(int id, double amount, String email, String purpose, int status, String managerEmail) {
 		super();
 		this.id = id;
 		this.amount = amount;
 		this.email = email;
+		this.purpose = purpose;
+		this.status = status;
+		this.managerEmail = managerEmail;
 	}
 
 	@Override
@@ -27,6 +33,9 @@ public class Request implements Serializable{
 		result = prime * result + (int) (temp ^ (temp >>> 32));
 		result = prime * result + ((email == null) ? 0 : email.hashCode());
 		result = prime * result + id;
+		result = prime * result + ((managerEmail == null) ? 0 : managerEmail.hashCode());
+		result = prime * result + ((purpose == null) ? 0 : purpose.hashCode());
+		result = prime * result + status;
 		return result;
 	}
 
@@ -48,12 +57,25 @@ public class Request implements Serializable{
 			return false;
 		if (id != other.id)
 			return false;
+		if (managerEmail == null) {
+			if (other.managerEmail != null)
+				return false;
+		} else if (!managerEmail.equals(other.managerEmail))
+			return false;
+		if (purpose == null) {
+			if (other.purpose != null)
+				return false;
+		} else if (!purpose.equals(other.purpose))
+			return false;
+		if (status != other.status)
+			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Request [id=" + id + ", amount=" + amount + ", email=" + email + "]";
+		return "Request [id=" + id + ", amount=" + amount + ", email=" + email + ", purpose=" + purpose + ", status="
+				+ status + ", managerEmail=" + managerEmail + "]";
 	}
 
 	public int getId() {
@@ -79,4 +101,29 @@ public class Request implements Serializable{
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public String getPurpose() {
+		return purpose;
+	}
+
+	public void setPurpose(String purpose) {
+		this.purpose = purpose;
+	}
+
+	public int getStatus() {
+		return status;
+	}
+
+	public void setStatus(int status) {
+		this.status = status;
+	}
+
+	public String getManagerEmail() {
+		return managerEmail;
+	}
+
+	public void setManagerEmail(String managerEmail) {
+		this.managerEmail = managerEmail;
+	}
+
 }
