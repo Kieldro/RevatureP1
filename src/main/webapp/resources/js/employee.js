@@ -7,17 +7,18 @@ function updateReimbursement() {
 	// let email = document.getElementById("loggedInAs").innerHTML;
 	let purpose = document.getElementById("purpose_input").value;
 	let amount = document.getElementById("amount_input").value;
-	console.log(email + " successfully did function for amount: " + amount)
 
 	let xhttp = new XMLHttpRequest();
 	xhttp.onreadystatechange = function() {
 		if (this.readyState == 4 && this.status == 200) {
-			console.log("sent the info")
+			console.log(email + " successfully did function for amount: " + amount)
+			showMyReimbursements();
 		}
 	};
 	xhttp.open("POST", "/project1/insertRequest.do");
 	xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 	xhttp.send("email=" + email + "&purpose=" + purpose + "&amount=" + amount);
+
 }
 
 function showMyReimbursements() {
