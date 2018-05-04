@@ -32,7 +32,14 @@ public class ConnectionUtil {
 		InputStream in = null;
 		Properties p = new Properties();
 		try {
-			in = new FileInputStream("/home/keo/Documents/workspace-st/project1/src/main/resources/db.properties");
+			try {
+				in = new FileInputStream("/home/keo/Documents/workspace-st/project1/src/main/resources/db.properties");
+
+			} catch (FileNotFoundException e) {
+				// System.err.println(e.getMessage());
+
+				in = new FileInputStream("/var/lib/jenkins/workspace/RevatureP1/src/main/resources/db.properties");
+			}
 			p.load(in);
 			return DriverManager.getConnection(p.getProperty("jdbc.url"), p.getProperty("jdbc.username"),
 					p.getProperty("jdbc.password"));
