@@ -1,8 +1,9 @@
-//console.log("js running...")
+console.log("js running...")
 let email = "jane@gmail.com";
 let manager = false;
+//email = "keo@gmail.com";manager = true;
 // var x = document.cookie;
-// document.getElementById("loggedInAs").innerHTML = x.substring(9);
+ document.getElementById("username").innerHTML = email;
 
 var managerForm = document.getElementById("managerForm");
 var headline = document.getElementById("headline");
