@@ -6,7 +6,6 @@ import com.revature.model.Request;
 
 //Data Access Interface
 public interface RequestDAI {
-
 	public Request getRequest(int id);
 
 	public boolean insertRequest(Request r);

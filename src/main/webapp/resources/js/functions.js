@@ -1,7 +1,7 @@
 console.log("js running...")
 let email = "jane@gmail.com";
 let manager = false;
-//email = "keo@gmail.com";manager = true;
+email = "keo@gmail.com";manager = true;
 // var x = document.cookie;
  document.getElementById("username").innerHTML = email;
 
